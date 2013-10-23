@@ -9,7 +9,9 @@ This is Usefull for building AppDynamics Extensions using maven or Gradle
 
 * Gradle Example
 
-	repositories {	
+
+    // Simple Example
+    repositories {	
     	// Use 'maven central' for resolving your dependencies.
     	mavenCentral()
     	
