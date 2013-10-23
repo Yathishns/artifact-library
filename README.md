@@ -4,7 +4,7 @@ artifact-library
 
 Use this as a maven Library for public accessible Artifacts.
 
-This is Usefull for building AppDynamics Extensions using maven or Gradle
+This is useful for building AppDynamics Extensions using maven or Gradle
 
 
 * Gradle Example
@@ -21,5 +21,5 @@ This is Usefull for building AppDynamics Extensions using maven or Gradle
         	url "https://raw.github.com/Appdynamics/artifact-library/master/repo/"
     	}
 	}
-	```
+	``
 
