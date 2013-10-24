@@ -21,5 +21,5 @@ This is useful for building AppDynamics Extensions using maven or Gradle
         	url "https://raw.github.com/Appdynamics/artifact-library/master/repo/"
     	}
 	}
-	``
+	```
 
