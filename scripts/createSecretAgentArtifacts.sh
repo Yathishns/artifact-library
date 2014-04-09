@@ -20,7 +20,15 @@ cd $codebase/agent/java/core
 
 ant build
 
-
+# Obfuscation
+mvn deploy:deploy-file   \
+-DgroupId=com.appdynamics.agent.develop \
+-DartifactId=AppAgentPlain \
+-Dversion=$version \
+-Dpackaging=jar \
+-DrepositoryId=github \
+-Durl=file://$maven \
+-Dfile=$codebase/agent/java/core/build/temp/lib/appagent.jar
 
 echo BUILD Dynamic Services
 find $codebase/dynamic-services/services -d 1 -not -name ".*"  -exec gradle -p "{}" build ";"
@@ -77,6 +85,56 @@ mvn deploy:deploy-file   \
 -Durl=file://$maven \
 -Dfile=$codebase/dynamic-services/services/genericInterceptor/build/obfuscated/genericInterceptor.jar
 
+
+
+# Obfuscation
+mvn deploy:deploy-file   \
+-DgroupId=com.appdynamics.agent.develop \
+-DartifactId=ObfuscationAdapter \
+-Dversion=$version \
+-Dpackaging=jar \
+-DrepositoryId=github \
+-Durl=file://$maven \
+-Dfile=$codebase/dynamic-services/obfuscation-adapter/build/libs/obfuscation-adapter.jar
+
+mvn deploy:deploy-file   \
+-DgroupId=com.appdynamics.agent.develop \
+-DartifactId=ObfuscationAsm \
+-Dversion=$version \
+-Dpackaging=jar \
+-DrepositoryId=github \
+-Durl=file://$maven \
+-Dfile=$codebase/agent/java/core/build/temp/lib/tp/asm-3.3.1.jar
+
+# Obfuscation
+mvn deploy:deploy-file   \
+-DgroupId=com.appdynamics.agent.develop \
+-DartifactId=ObfuscationMapping \
+-Dversion=$version \
+-Dpackaging=map \
+-DrepositoryId=github \
+-Durl=file://$maven \
+-Dfile=$codebase/agent/java/core/zkm/app-agent-changeLog.txt 
+
+# Obfuscation
+mvn deploy:deploy-file   \
+-DgroupId=com.appdynamics.agent.develop \
+-DartifactId=AppAgent \
+-Dversion=$version \
+-Dpackaging=jar \
+-DrepositoryId=github \
+-Durl=file://$maven \
+-Dfile=$codebase/agent/java/core/build/original/appagent.jar
+
+
+mvn deploy:deploy-file   \
+-DgroupId=com.appdynamics.develop \
+-DartifactId=Log4J \
+-Dversion=$version \
+-Dpackaging=jar \
+-DrepositoryId=github \
+-Durl=file://$maven \
+-Dfile=$codebase/thirdparty/lib/log4j/namespace-safe/singularity-log4j.jar
 
 cd $codebase
 git checkout master 
