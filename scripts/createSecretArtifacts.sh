@@ -17,7 +17,7 @@ git checkout v${version}GA
 echo "Building and packaging now"
 sleep 2
 cd $codebase/controller/controller-api
-ant package
+ant clean package -Dcheckclient-jar=../../thirdparty/lib/checkstyle/checkstyle-5.6/checkstyle-5.6-all.jar
 
 cp build/controller-api.jar $tmpD/controller-api.jar
 cd $tmpD

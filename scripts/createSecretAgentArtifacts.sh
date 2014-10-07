@@ -16,7 +16,7 @@ git checkout v${version}GA
 
 echo "Building and packaging now"
 sleep 2
-cd $codebase/agent/core/java-core
+cd $codebase/agent/java/core/
 
 ant build
 
@@ -28,7 +28,7 @@ mvn deploy:deploy-file   \
 -Dpackaging=jar \
 -DrepositoryId=github \
 -Durl=file://$maven \
--Dfile=$codebase/agent/core/java-core/build/temp/lib/appagent.jar
+-Dfile=$codebase/agent/java/core/build/temp/lib/appagent.jar
 
 echo BUILD Dynamic Services
 find $codebase/dynamic-services/services -d 1 -not -name ".*"  -exec gradle -p "{}" build ";"
@@ -37,7 +37,7 @@ echo BUILD Production Package --
 ant package-production
 
 export CODEBASE_HOME=$codebase
-find $codebase/dynamic-services/services/*/build/libs -name "*.jar" -exec obfuscateServiceJar.sh 3.7.15 "{}" ";"
+find $codebase/dynamic-services/services/*/build/libs -name "*.jar" -exec obfuscateServiceJar.sh ${version} "{}" ";"
 
 mvn deploy:deploy-file   \
 -DgroupId=com.appdynamics \
@@ -46,7 +46,7 @@ mvn deploy:deploy-file   \
 -Dpackaging=zip \
 -DrepositoryId=github \
 -Durl=file://$maven \
--Dfile=$codebase/agent/core/java-core/dist/AppServerAgent.zip
+-Dfile=$codebase/agent/java/core/dist/AppServerAgent.zip
 
 mvn deploy:deploy-file   \
 -DgroupId=com.appdynamics.agent.services \
@@ -104,7 +104,7 @@ mvn deploy:deploy-file   \
 -Dpackaging=jar \
 -DrepositoryId=github \
 -Durl=file://$maven \
--Dfile=$codebase/agent/core/java-core/build/temp/lib/tp/asm-3.3.1.jar
+-Dfile=$codebase/agent/java/core/build/temp/lib/tp/asm-3.3.1.jar
 
 # Obfuscation
 mvn deploy:deploy-file   \
@@ -114,7 +114,7 @@ mvn deploy:deploy-file   \
 -Dpackaging=map \
 -DrepositoryId=github \
 -Durl=file://$maven \
--Dfile=$codebase/agent/core/java-core/zkm/app-agent-changeLog.txt 
+-Dfile=$codebase/agent/java/core/zkm/app-agent-changeLog.txt 
 
 # Obfuscation
 mvn deploy:deploy-file   \
@@ -124,7 +124,7 @@ mvn deploy:deploy-file   \
 -Dpackaging=jar \
 -DrepositoryId=github \
 -Durl=file://$maven \
--Dfile=$codebase/agent/core/java-core/build/original/appagent.jar
+-Dfile=$codebase/agent/java/core/build/original/appagent.jar
 
 
 mvn deploy:deploy-file   \
