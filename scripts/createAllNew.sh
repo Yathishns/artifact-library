@@ -22,7 +22,7 @@ mkdir -p $tmpD
 mkdir -p $tmpD/agent
 mkdir -p $tmpD/dl
 
-#groovy $cdir/DownloadAll.groovy $baselink $tmpD/dl
+groovy $cdir/DownloadAll.groovy $baselink $tmpD/dl
 
 
 
