@@ -16,9 +16,9 @@ git checkout v${version}GA
 
 echo "Building and packaging now"
 sleep 2
-cd $codebase/agent/java/core/
+cd $codebase/agent/core/java-core
 
-ant build
+ant clean build
 
 # Obfuscation
 mvn deploy:deploy-file   \
@@ -28,7 +28,7 @@ mvn deploy:deploy-file   \
 -Dpackaging=jar \
 -DrepositoryId=github \
 -Durl=file://$maven \
--Dfile=$codebase/agent/java/core/build/temp/lib/appagent.jar
+-Dfile=$codebase/agent/core/java-core/build/temp/lib/appagent.jar
 
 echo BUILD Dynamic Services
 find $codebase/dynamic-services/services -d 1 -not -name ".*"  -exec gradle -p "{}" build ";"
