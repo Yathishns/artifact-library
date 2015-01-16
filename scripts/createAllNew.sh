@@ -64,6 +64,9 @@ unzip $tmpD/dl/AppServerAgent.zip lib/singularity-log4j.jar
 unzip $tmpD/dl/AppServerAgent.zip javaagent.jar
 
 
+echo "Please make sure to have a compiled agent (ant build) in Version $version before hit enter to continue........"
+read
+# Obfuscation
 mvn deploy:deploy-file   \
 -DgroupId=com.appdynamics.agent.develop \
 -DartifactId=AppAgentPlain \
@@ -71,7 +74,8 @@ mvn deploy:deploy-file   \
 -Dpackaging=jar \
 -DrepositoryId=github \
 -Durl=file://$smaven \
--Dfile=$tmpD/agentTmp/lib/appagent.jar
+-Dfile=$codebase/agent/core/java-core/build/temp/lib/appagent.jar
+
 
 mvn deploy:deploy-file   \
 -DgroupId=com.appdynamics \
@@ -82,6 +86,15 @@ mvn deploy:deploy-file   \
 -Durl=file://$smaven \
 -Dfile=$tmpD/dl/AppServerAgent.zip
 
+mvn deploy:deploy-file   \
+-DgroupId=com.appdynamics \
+-DartifactId=MachineAgent \
+-Dversion=$version \
+-Dpackaging=zip \
+-DrepositoryId=github \
+-Durl=file://$smaven \
+-Dfile=$tmpD/dl/machineagent.zip
+
 # Obfuscation
 mvn deploy:deploy-file   \
 -DgroupId=com.appdynamics.agent.develop \
@@ -89,7 +102,7 @@ mvn deploy:deploy-file   \
 -Dversion=$version \
 -Dpackaging=map \
 -DrepositoryId=github \
--Durl=file://$maven \
+-Durl=file://$smaven \
 -Dfile=$tmpD/dl/agentChangelogZKM.txt
 
 # Obfuscation
