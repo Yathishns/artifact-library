@@ -58,23 +58,14 @@ mvn deploy:deploy-file   \
 
 mkdir -p cd $tmpD/agentTmp
 cd $tmpD/agentTmp
-
-unzip $tmpD/dl/AppServerAgent.zip lib/appagent.jar
-unzip $tmpD/dl/AppServerAgent.zip lib/singularity-log4j.jar
-unzip $tmpD/dl/AppServerAgent.zip javaagent.jar
+unzip $tmpD/dl/AppServerAgent.zip 
+mv ver*/* .
 
 
-echo "Please make sure to have a compiled agent (ant build) in Version $version before hit enter to continue........"
-read
-# Obfuscation
-mvn deploy:deploy-file   \
--DgroupId=com.appdynamics.agent.develop \
--DartifactId=AppAgentPlain \
--Dversion=$version \
--Dpackaging=jar \
--DrepositoryId=github \
--Durl=file://$smaven \
--Dfile=$codebase/agent/core/java-core/build/temp/lib/appagent.jar
+#unzip $tmpD/dl/AppServerAgent.zip lib/appagent.jar
+#unzip $tmpD/dl/AppServerAgent.zip lib/singularity-log4j.jar
+#unzip $tmpD/dl/AppServerAgent.zip javaagent.jar
+
 
 
 mvn deploy:deploy-file   \
