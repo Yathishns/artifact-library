@@ -28,7 +28,7 @@ def json = new JsonSlurper().parseText(new URL(url).text)
 
 downloadFile (json,"com.appdynamics.machineagent:machineagent","$local/machineagent.zip")
 downloadFile (json,"com.appdynamics.agent:app-server-agent-obfuscated:","$local/AppServerAgent.zip")
-downloadFile (json,"com.appdynamics.agent:app-server-agent-obfuscated:","$local/controller-api.jar")
+downloadFile (json,"com.appdynamics.controller:controller-api:","$local/controller-api.jar")
 downloadFile (json,"com.appdynamics.agent:app-server-agent-obfuscated-zkm-changelog:","$local/agentChangelogZKM.txt")
 
 
