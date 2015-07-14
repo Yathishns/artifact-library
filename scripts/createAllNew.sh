@@ -135,3 +135,6 @@ mvn deploy:deploy-file   \
 -Durl=file://$smaven \
 -Dfile=$tmpD/agentTmp/javaagent.jar
 
+
+# rm -rf  $tmpD
+

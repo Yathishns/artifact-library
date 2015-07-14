@@ -2,6 +2,8 @@
 
 cdir="$(pwd)"
 
+echo $*
+
 echo "Starting at $cdir"
 maven=$1
 smaven=$2
