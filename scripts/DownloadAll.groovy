@@ -19,7 +19,9 @@ println "Downloading from : $url"
 new File(local).mkdirs();
 
 
-def text = new URL(url).text.split("\n")[1..-1].join("\n")
+def text = new URL(url).text
+// removed since 4.1.3
+//.split("\n")[1..-1].join("\n")
 def json = new JsonSlurper().parseText(text)
 
 
