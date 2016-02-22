@@ -26,7 +26,6 @@ groovy $cdir/DownloadAll.groovy $baselink $tmpD/dl
 
 
 
-
 cd $tmpD/agent
 unzip $tmpD/dl/machineagent.zip machineagent.jar
 
@@ -136,5 +135,28 @@ mvn deploy:deploy-file   \
 -Dfile=$tmpD/agentTmp/javaagent.jar
 
 
+mkdir -p cd $tmpD/agentTmpPlain
+cd $tmpD/agentTmpPlain
+unzip $tmpD/dl/AppServerAgentPlain.zip 
+mv ver*/* .
+
+
+mvn deploy:deploy-file   \
+-DgroupId=com.appdynamics.agent.develop \
+-DartifactId=AppAgentPlain \
+-Dversion=$version \
+-Dpackaging=jar \
+-DrepositoryId=github \
+-Durl=file://$smaven \
+-Dfile=$tmpD/agentTmpPlain/lib/appagent.jar
+
+mvn deploy:deploy-file   \
+-DgroupId=com.appdynamics.agent.develop \
+-DartifactId=ObfuscationAsm \
+-Dversion=$version \
+-Dpackaging=jar \
+-DrepositoryId=github \
+-Durl=file://$smaven \
+-Dfile=$tmpD/agentTmpPlain/lib/tp/asm-5.0.1.jar
 # rm -rf  $tmpD
 

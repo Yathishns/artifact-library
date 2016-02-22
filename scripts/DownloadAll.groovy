@@ -29,7 +29,11 @@ def json = new JsonSlurper().parseText(text)
 
 
 downloadFile (json,"com.appdynamics.machineagent:machineagent:?@zip","$local/machineagent.zip")
+
 downloadFile (json,"com.appdynamics.agent:app-server-agent-obfuscated:?@zip","$local/AppServerAgent.zip")
+downloadFile (json,"com.appdynamics.agent:app-server-agent:releaseZip-?@zip","$local/AppServerAgent.zip")
+
+downloadFile (json,"com.appdynamics.agent:app-server-agent:debugZip-?@zip","$local/AppServerAgentPlain.zip")
 
 downloadFile (json,"com.appdynamics.controller:controller-api:?@jar","$local/controller-api.jar")
 downloadFile (json,"com.appdynamics.agent:app-server-agent-obfuscated-zkm-changelog:?@txt","$local/agentChangelogZKM.txt")
@@ -45,12 +49,25 @@ def downloadFile(json,id,filename) {
 	if (file == null) {
 		println "Couldn't find $filename : Query $id"
 	} else {
-		println "Downloading : $file "
 
-    	def target = new FileOutputStream(filename)
-	    def out = new BufferedOutputStream(target)
-    	out << new URL(file).openStream()
-    	out.close()
+		download(file,filename)
+		
 		
 	}
+}
+
+def download (def url, String filename) {
+	println " --> Downloading to local file $filename from \n --< $url"
+	
+	def proc = "curl -o $filename $url ".execute()
+
+	Thread.start { 
+		System.err << proc.err;
+		System.out << proc.out;
+	} 
+
+	proc.waitFor()
+
+	sleep (500)
+	println "--< finished \n\n"
 }
