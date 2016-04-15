@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.appdynamics.ace.jasperamql</groupId>
+  <artifactId>AMQLJasperLib</artifactId>
+  <version>0.2.4-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20160415.143521</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <lastUpdated>20160415143521</lastUpdated>
+  </versioning>
+</metadata>
