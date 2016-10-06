@@ -30,14 +30,19 @@ def json = new JsonSlurper().parseText(text)
 
 downloadFile (json,"com.appdynamics.machineagent:machineagent:?@zip","$local/machineagent.zip")
 
+downloadFile (json,"com.appdynamics.controller:controller:?@ear","$local/controller.ear")
+
 downloadFile (json,"com.appdynamics.agent:app-server-agent-obfuscated:?@zip","$local/AppServerAgent.zip")
 downloadFile (json,"com.appdynamics.agent:app-server-agent:releaseZip-?@zip","$local/AppServerAgent.zip")
 
 downloadFile (json,"com.appdynamics.agent:app-server-agent:debugZip-?@zip","$local/AppServerAgentPlain.zip")
+downloadFile (json,"com.appdynamics.agent:app-server-agent-dev:?@zip","$local/AppServerAgentPlain.zip")
 
 downloadFile (json,"com.appdynamics.controller:controller-api:?@jar","$local/controller-api.jar")
 downloadFile (json,"com.appdynamics.agent:app-server-agent-obfuscated-zkm-changelog:?@txt","$local/agentChangelogZKM.txt")
 downloadFile (json,"com.appdynamics.controller:controller-zkm-changelog:?@txt","$local/controller_zkm.txt");
+
+downloadFile (json,"com.appdynamics.controller:controller-auth:?@jar","$local/controller_auth.jar");
 
 
 

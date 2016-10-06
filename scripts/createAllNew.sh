@@ -22,7 +22,7 @@ mkdir -p $tmpD
 mkdir -p $tmpD/agent
 mkdir -p $tmpD/dl
 
-groovy $cdir/DownloadAll.groovy $baselink $tmpD/dl
+#groovy $cdir/DownloadAll.groovy $baselink $tmpD/dl
 
 
 
@@ -124,6 +124,16 @@ mvn deploy:deploy-file   \
 -Durl=file://$smaven \
 -Dfile=$tmpD/dl/controller-api.jar 
 
+mvn deploy:deploy-file   \
+-DgroupId=com.appdynamics \
+-DartifactId=controller-auth \
+-Dversion=$version \
+-Dpackaging=jar \
+-DrepositoryId=github \
+-Durl=file://$smaven \
+-Dfile=$tmpD/dl/controller_auth.jar
+ 
+
 
 mvn deploy:deploy-file   \
 -DgroupId=com.appdynamics \
@@ -159,4 +169,19 @@ mvn deploy:deploy-file   \
 -Durl=file://$smaven \
 -Dfile=$tmpD/agentTmpPlain/lib/tp/asm-5.0.1.jar
 # rm -rf  $tmpD
+
+
+mkdir -p $tmpD/ear
+cd $tmpD/ear
+
+unzip $tmpD/dl/controller.ear controller-beans.jar
+mvn deploy:deploy-file   \
+-DgroupId=com.appdynamics \
+-DartifactId=controller-beans \
+-Dversion=$version \
+-Dpackaging=jar \
+-DrepositoryId=github \
+-Durl=file://$smaven \
+-Dfile=$tmpD/ear/controller-beans.jar
+
 
