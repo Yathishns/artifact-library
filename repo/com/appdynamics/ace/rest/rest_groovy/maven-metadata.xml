@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.appdynamics.ace.rest</groupId>
+  <artifactId>rest_groovy</artifactId>
+  <version>1.4</version>
+  <versioning>
+    <versions>
+      <version>1.4</version>
+      <version>1.4.1</version>
+    </versions>
+    <lastUpdated>20160725215606</lastUpdated>
+  </versioning>
+</metadata>

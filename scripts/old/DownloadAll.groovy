@@ -19,18 +19,23 @@ println "Downloading from : $url"
 new File(local).mkdirs();
 
 
+// def text = new URL(url).text
+// // removed since 4.1.3
+// //.split("\n")[1..-1].join("\n")
+// def json = new JsonSlurper().parseText(text)
+
 def text = new URL(url).text
-// removed since 4.1.3
-//.split("\n")[1..-1].join("\n")
-def json = new JsonSlurper().parseText(text)
 
-
+text = text.replaceAll("'[^']+': '',","");
+json = Eval.me(text)
+json = Eval.me(text)
 
 
 
 downloadFile (json,"com.appdynamics.machineagent:machineagent:?@zip","$local/machineagent.zip")
 
 downloadFile (json,"com.appdynamics.controller:controller:?@ear","$local/controller.ear")
+downloadFile (json,"com.appdynamics.controller:controller-release-ear:?@ear","$local/controller.ear")
 
 downloadFile (json,"com.appdynamics.agent:app-server-agent-obfuscated:?@zip","$local/AppServerAgent.zip")
 downloadFile (json,"com.appdynamics.agent:app-server-agent:releaseZip-?@zip","$local/AppServerAgent.zip")

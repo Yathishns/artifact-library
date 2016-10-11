@@ -4,7 +4,7 @@
   <artifactId>agent-api</artifactId>
   <versioning>
     <latest>3.7.11</latest>
-    <release>4.2.1</release>
+    <release>4.2.3</release>
     <versions>
       <version>3.7.11</version>
       <version>3.7.12</version>
@@ -22,7 +22,10 @@
       <version>4.1.3</version>
       <version>4.2.0</version>
       <version>4.2.1</version>
+      <version>4.1.10</version>
+      <version>4.2.3.0</version>
+      <version>4.2.3</version>
     </versions>
-    <lastUpdated>20160314134613</lastUpdated>
+    <lastUpdated>20161010163356</lastUpdated>
   </versioning>
 </metadata>

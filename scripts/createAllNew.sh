@@ -22,8 +22,12 @@ mkdir -p $tmpD
 mkdir -p $tmpD/agent
 mkdir -p $tmpD/dl
 
-#groovy $cdir/DownloadAll.groovy $baselink $tmpD/dl
+groovy $cdir/DownloadAll_build.groovy $baselink $tmpD/dl
 
+if [ $? -ne 0 ]; then
+    echo "Download unsucessfull! Please check !!!"
+    exit -1
+fi
 
 
 cd $tmpD/agent
@@ -159,6 +163,15 @@ mvn deploy:deploy-file   \
 -DrepositoryId=github \
 -Durl=file://$smaven \
 -Dfile=$tmpD/agentTmpPlain/lib/appagent.jar
+
+mvn deploy:deploy-file   \
+-DgroupId=com.appdynamics.agent.develop \
+-DartifactId=AppAgentPlainBoot \
+-Dversion=$version \
+-Dpackaging=jar \
+-DrepositoryId=github \
+-Durl=file://$smaven \
+-Dfile=$tmpD/agentTmpPlain/lib/appagent-boot.jar
 
 mvn deploy:deploy-file   \
 -DgroupId=com.appdynamics.agent.develop \
