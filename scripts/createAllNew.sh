@@ -149,6 +149,16 @@ mvn deploy:deploy-file   \
 -Dfile=$tmpD/agentTmp/javaagent.jar
 
 
+mvn deploy:deploy-file   \
+-DgroupId=com.appdynamics \
+-DartifactId=javaagentSDK \
+-Dversion=$version \
+-Dpackaging=jar \
+-DrepositoryId=github \
+-Durl=file://$maven \
+-Dfile=$tmpD/agentTmp/javaagent.jar
+
+
 mkdir -p cd $tmpD/agentTmpPlain
 cd $tmpD/agentTmpPlain
 unzip $tmpD/dl/AppServerAgentPlain.zip 
